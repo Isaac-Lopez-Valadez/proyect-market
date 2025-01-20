@@ -8,7 +8,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_productos")
+    @Column(name = "id_producto")
     private Integer productId;
 
     @Column(name = "nombre")
@@ -17,10 +17,10 @@ public class Product {
     @Column(name = "id_categoria")
     private Integer categoryId;
 
-    @Column(name = "codigo-barras")
+    @Column(name = "codigo_barras")
     private String barcode;
 
-    @Column(name = "precio-venta")
+    @Column(name = "precio_venta")
     private Double price;
 
     @Column(name = "cantidad_stock")
@@ -28,6 +28,10 @@ public class Product {
 
     @Column(name = "estado")
     private Boolean status;
+
+    @ManyToOne
+    @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
+    private Category category;
 
     public Integer getProductId() {
         return productId;
@@ -83,5 +87,27 @@ public class Product {
 
     public void setStatus(Boolean status) {
         this.status = status;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productId=" + productId +
+                ", name='" + name + '\'' +
+                ", categoryId=" + categoryId +
+                ", barcode='" + barcode + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", status=" + status +
+                ", category=" + category +
+                '}';
     }
 }
