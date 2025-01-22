@@ -3,6 +3,7 @@ package com.proyect.proyect_market.percistence.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "compras")
@@ -26,14 +27,17 @@ public class Buy {
     private String comment;
 
     @Column(name = "estado")
-    private Boolean status;
+    private String status;
+
+    @ManyToOne
+    @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
+    private Customer customer;
+
+    @OneToMany(mappedBy = "buy", cascade = CascadeType.ALL)
+    private List<BuyProduct> products;
 
     public Integer getBuyId() {
         return buyId;
-    }
-
-    public void setBuyId(Integer buyId) {
-        this.buyId = buyId;
     }
 
     public String getCustomerId() {
@@ -68,11 +72,27 @@ public class Buy {
         this.comment = comment;
     }
 
-    public Boolean getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public List<BuyProduct> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<BuyProduct> products) {
+        this.products = products;
     }
 }

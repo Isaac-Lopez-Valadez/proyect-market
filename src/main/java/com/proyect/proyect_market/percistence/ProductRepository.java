@@ -44,7 +44,6 @@ public class ProductRepository implements ProductDomainRepository {
     @Override
     public ProductDomain saveProduct(ProductDomain productDomain) {
         Product product = mapper.toProduct(productDomain);
-        System.out.println("Producto antes de guardar: " + product);
         return mapper.toProductDomain(productCrudRepository.save(product));
     }
 

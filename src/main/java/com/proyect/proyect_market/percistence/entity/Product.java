@@ -37,10 +37,6 @@ public class Product {
         return productId;
     }
 
-    public void setProductId(Integer productId) {
-        this.productId = productId;
-    }
-
     public String getName() {
         return name;
     }
@@ -97,17 +93,4 @@ public class Product {
         this.category = category;
     }
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "productId=" + productId +
-                ", name='" + name + '\'' +
-                ", categoryId=" + categoryId +
-                ", barcode='" + barcode + '\'' +
-                ", price=" + price +
-                ", quantity=" + quantity +
-                ", status=" + status +
-                ", category=" + category +
-                '}';
-    }
 }
